@@ -1,0 +1,12 @@
+{
+  "name": "hapi-server",
+  "version": "0.0.0",
+  "description": "Web server on hapi",
+  "main": "index.js",
+  "repository": "https://github.com/cabaalexander/hapi-server",
+  "author": "Alexander Caba (cabaalexander)",
+  "license": "MIT",
+  "dependencies": {
+    "hapi": "^17.3.1"
+  }
+}
