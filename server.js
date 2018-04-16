@@ -1,19 +1,14 @@
 'use strict'
 
 const Hapi = require('hapi')
+const routes = require('./routes')
 
 const server = Hapi.server({
-  host: 'localhost',
-  port: '8000'
+  host: '0.0.0.0',
+  port: '8000',
 })
 
-server.route({
-  method: 'GET',
-  path: '/hello',
-  handler: function (request, h) {
-    return 'hello world'
-  }
-})
+server.route(routes)
 
 async function start() {
   try {
@@ -25,8 +20,6 @@ async function start() {
   }
 
   console.log(`Server running at: ${server.info.uri}`)
-
-  console.log(Object.keys(server))
 }
 
 start()
