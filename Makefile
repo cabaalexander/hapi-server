@@ -3,6 +3,8 @@ CONTAINER_NAME=hapi-server
 
 doom: stop rm
 
+init: build run
+
 sandbox:
 	docker run \
 		-p 8128:8128 \
