@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+
+  hapi-server:
+    image: ${IMAGE}
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: ${CONTAINER_NAME}
+    ports:
+      - "8128:8128"
+    volumes:
+      - .:/code
+

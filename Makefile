@@ -1,29 +1,33 @@
-IMAGE=cabaalexander/hapi-server:latest
-CONTAINER_NAME=hapi-server
+CMD=docker-compose
 
-doom: stop rm
+export IMAGE=cabaalexander/hapi-server:latest
+export CONTAINER_NAME=hapi-server
 
-init: build run
+init: build up
+
+down:
+	$(CMD) down
+
+up:
+	$(CMD) up
+
+stop:
+	$(CMD) stop
+
+rm:
+	$(CMD) rm -f
+
+build: down
+	$(CMD) build --force-rm \
+		&& docker image prune -f
 
 sandbox:
 	docker run \
 		-p 8128:8128 \
-		--name $(CONTAINER_NAME) \
+		-v ${PWD}/:/app \
+		--name $(CONTAINER_NAME)-sandbox \
 		--rm -it $(IMAGE) sh
 
-build:
-	docker build -t $(IMAGE) . \
-	&& docker image prune -f
-
-run:
-	docker run \
-		-p 8128:8128 \
-		-d \
-		--name $(CONTAINER_NAME) $(IMAGE)
-
-stop:
-	docker stop $(CONTAINER_NAME)
-
-rm:
-	docker rm $(CONTAINER_NAME)
+attach:
+	docker exec -it $(CONTAINER_NAME) sh
 

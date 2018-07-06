@@ -2,24 +2,24 @@
 
 module.exports = [
   {
-    method: 'GET',
     path: '/',
+    method: 'GET',
     handler: () => `<h1>hapi server - home</h1>`,
   },
 
   {
-    method: 'GET',
     path: '/hello',
+    method: 'GET',
     handler: () => `hello world`,
   },
 
   {
-    method: 'GET',
     path: '/cors',
+    method: 'GET',
     options: {
       cors: true,
     },
     handler: () => `You should access this via XHR`
-  }
+  },
 ]
 

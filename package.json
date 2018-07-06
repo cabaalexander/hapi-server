@@ -1,6 +1,9 @@
 {
   "name": "hapi-server",
   "version": "0.0.0",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
   "description": "Web server on hapi",
   "main": "index.js",
   "repository": "https://github.com/cabaalexander/hapi-server",
@@ -8,5 +11,8 @@
   "license": "MIT",
   "dependencies": {
     "hapi": "^17.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5"
   }
 }
