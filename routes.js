@@ -4,7 +4,13 @@ module.exports = [
   {
     path: '/',
     method: 'GET',
-    handler: () => `<h1>hapi server - home</h1>`,
+    handler: (request, h) => `<h1>hapi server - home</h1>`,
+  },
+
+  {
+    path: '/post',
+    method: 'POST',
+    handler: (request, h) => 'I did something (200)\n',
   },
 
   {
