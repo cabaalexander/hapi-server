@@ -5,21 +5,8 @@ export CONTAINER_NAME=hapi-server
 
 init: build up
 
-down:
-	$(CMD) down
-
-up:
-	$(CMD) up
-
-stop:
-	$(CMD) stop
-
-rm:
-	$(CMD) rm -f
-
-build: down
-	$(CMD) build --force-rm \
-		&& docker image prune -f
+attach:
+	docker exec -it $(CONTAINER_NAME) sh
 
 sandbox:
 	docker run \
@@ -28,6 +15,24 @@ sandbox:
 		--name $(CONTAINER_NAME)-sandbox \
 		--rm -it $(IMAGE) sh
 
-attach:
-	docker exec -it $(CONTAINER_NAME) sh
+# Removes all the services related
+down:
+	$(CMD) down
+
+# Starts all the services
+up:
+	$(CMD) up
+
+# Stop all services related
+stop:
+	$(CMD) stop
+
+# Removes all images
+rm:
+	$(CMD) rm -f
+
+# Builds any image for the services
+build: down
+	$(CMD) build --force-rm \
+		&& docker image prune -f
 
