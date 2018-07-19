@@ -1,5 +1,7 @@
 FROM node:10-alpine
 
+MAINTAINER Alexander Caba [@cabaalexander]
+
 WORKDIR /code
 
 ADD . .

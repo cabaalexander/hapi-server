@@ -9,7 +9,9 @@ services:
       dockerfile: Dockerfile.dev
     container_name: ${CONTAINER_NAME}
     ports:
-      - "8128:8128"
+      - "${PORT}:${PORT}"
     volumes:
       - .:/code
-
+    environment:
+      - NODE_HOST=${HOST}
+      - NODE_PORT=${PORT}
