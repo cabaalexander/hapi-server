@@ -1,4 +1,4 @@
-CMD=docker-compose
+CMD := docker-compose
 
 # Docker
 export IMAGE=cabaalexander/hapi-server:latest
@@ -9,7 +9,7 @@ export HOST?=0.0.0.0
 export PORT?=8128
 
 # Local
-PORT_SANDBOX = $(shell echo $$(( $(PORT) + 1 )))
+PORT_SANDBOX := $(shell echo $$(( $(PORT) + 1 )))
 
 init: build up
 
@@ -20,14 +20,14 @@ build: down
 
 # Starts all the services
 up:
-	$(CMD) up
+	$(CMD) up $(OPTIONS)
 
 # Stops and removes all the services related
 down:
 	$(CMD) down
 
 start:
-	$(CMD) start
+	$(CMD) start $(OPTIONS)
 
 stop:
 	$(CMD) stop

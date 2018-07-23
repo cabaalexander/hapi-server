@@ -10,7 +10,12 @@ module.exports = [
   {
     path: '/post',
     method: 'POST',
-    handler: (request, h) => 'I did something (200)\n',
+    handler: (request, h) => {
+      const json = JSON.stringify(request.payload, null, 2)
+      console.log(`:: Payload ::\n\n${json}\n\n:: Payload ::`)
+
+      return 'I did something (200)\n'
+    },
   },
 
   {
